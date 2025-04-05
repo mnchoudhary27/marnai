@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Resume - MARN AI</title>
+    <!-- Tailwind CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex">
+                    <div class="flex-shrink-0 flex items-center">
+                        <span class="text-2xl font-bold text-indigo-600">MARN<span class="text-gray-800">AI</span></span>
+                    </div>
+                    <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                        <a href="index.html" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            Home
+                        </a>
+                        <a href="upload-jd.html" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            Upload JD
+                        </a>
+                        <a href="upload-resume.html" class="border-indigo-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            Upload Resume
+                        </a>
+                        <a href="match-results.html" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            Match Results
+                        </a>
+                        <a href="schedule-interview.html" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            Schedule Interview
+                        </a>
+                    </div>
+                </div>
+                <div class="-mr-2 flex items-center sm:hidden">
+                    <button id="mobile-menu-button" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu, show/hide based on menu state. -->
+        <div class="sm:hidden hidden" id="mobile-menu">
+            <div class="pt-2 pb-3 space-y-1">
+                <a href="index.html" class="border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Home</a>
+                <a href="upload-jd.html" class="border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Upload JD</a>
+                <a href="upload-resume.html" class="bg-indigo-50 border-indigo-500 text-indigo-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Upload Resume</a>
+                <a href="match-results.html" class="border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Match Results</a>
+                <a href="schedule-interview.html" class="border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Schedule Interview</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="bg-white shadow">
+        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+            <h1 class="text-3xl font-bold text-gray-900">Upload Resume</h1>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+        <!-- Alert Container -->
+        <div class="alert-container"></div>
+
+        <!-- Upload Resume Section -->
+        <div class="md:grid md:grid-cols-3 md:gap-6">
+            <div class="md:col-span-1">
+                <div class="px-4 sm:px-0">
+                    <h3 class="text-lg font-medium leading-6 text-gray-900">Candidate Resume</h3>
+                    <p class="mt-1 text-sm text-gray-600">
+                        Upload candidate resumes to extract skills, experience, and qualifications for matching with job descriptions.
+                    </p>
+                    <div class="mt-6 bg-gray-50 p-4 border border-gray-200 rounded-md">
+                        <h4 class="text-sm font-medium text-gray-900">Tips for Better Results</h4>
+                        <ul class="mt-2 text-sm text-gray-600 space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Use PDF or DOCX formats for best parsing results</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Ensure resumes include contact information</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Clearly structured resumes with well-defined sections work best</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-5 md:mt-0 md:col-span-2">
+                <form data-api-submit="upload-resume" data-success-redirect="match-results.html">
+                    <div class="shadow sm:rounded-md sm:overflow-hidden">
+                        <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
+                            <!-- Message Container -->
+                            <div class="message-container"></div>
+
+                            <!-- File Upload -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">
+                                    Upload Files (Single or Multiple)
+                                </label>
+                                <div class="mt-1">
+                                    <div class="upload-area">
+                                        <input type="file" name="resume_files" id="resume-files" class="hidden" accept=".pdf,.doc,.docx,.txt" multiple>
+                                        <div class="flex flex-col items-center justify-center py-6">
+                                            <i class="fas fa-cloud-upload-alt text-indigo-500 text-4xl mb-2"></i>
+                                            <p class="text-sm font-medium text-gray-900">Drag and drop your files here</p>
+                                            <p class="text-xs text-gray-500">or click to browse files</p>
+                                            <p class="file-name mt-2 text-sm font-medium text-indigo-600"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="mt-2 text-sm text-gray-500">
+                                    Supported formats: PDF, Word, Text
+                                </p>
+                            </div>
+
+                            <!-- Selected Files List -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">
+                                    Selected Files
+                                </label>
+                                <div class="file-list space-y-2">
+                                    <!-- Files will be added here dynamically -->
+                                    <div class="text-center text-gray-500 py-4">
+                                        <p>No files selected yet</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
+                            <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                <i class="fas fa-cog mr-2"></i>
+                                Process Resume(s)
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Divider -->
+        <div class="hidden sm:block" aria-hidden="true">
+            <div class="py-5">
+                <div class="border-t border-gray-200"></div>
+            </div>
+        </div>
+
+        <!-- Existing Candidates -->
+        <div>
+            <h2 class="text-lg font-medium text-gray-900 mb-4">Existing Candidates</h2>
+            <div id="resume-list-container" class="animate-fade-in">
+                <!-- Loading state or candidate list will be inserted here by JavaScript -->
+                <div class="text-center py-12">
+                    <div class="spinner mx-auto"></div>
+                    <p class="mt-4 text-gray-600">Loading candidates...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 mt-12">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            <div class="md:flex md:items-center md:justify-between">
+                <div class="flex justify-center md:justify-start">
+                    <span class="text-2xl font-bold text-white">MARN<span class="text-indigo-400">AI</span></span>
+                </div>
+                <div class="mt-8 md:mt-0">
+                    <p class="text-center text-gray-400 text-sm">
+                        &copy; 2025 MARN AI. All rights reserved.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+</body>
+</html> 

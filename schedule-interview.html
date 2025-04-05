@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule Interview - MARN AI</title>
+    <!-- Tailwind CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Flatpickr for Date/Time -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex">
+                    <div class="flex-shrink-0 flex items-center">
+                        <span class="text-2xl font-bold text-indigo-600">MARN<span class="text-gray-800">AI</span></span>
+                    </div>
+                    <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                        <a href="index.html" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            Home
+                        </a>
+                        <a href="upload-jd.html" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            Upload JD
+                        </a>
+                        <a href="upload-resume.html" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            Upload Resume
+                        </a>
+                        <a href="match-results.html" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            Match Results
+                        </a>
+                        <a href="schedule-interview.html" class="border-indigo-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            Schedule Interview
+                        </a>
+                    </div>
+                </div>
+                <div class="-mr-2 flex items-center sm:hidden">
+                    <button id="mobile-menu-button" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu, show/hide based on menu state. -->
+        <div class="sm:hidden hidden" id="mobile-menu">
+            <div class="pt-2 pb-3 space-y-1">
+                <a href="index.html" class="border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Home</a>
+                <a href="upload-jd.html" class="border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Upload JD</a>
+                <a href="upload-resume.html" class="border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Upload Resume</a>
+                <a href="match-results.html" class="border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Match Results</a>
+                <a href="schedule-interview.html" class="bg-indigo-50 border-indigo-500 text-indigo-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Schedule Interview</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="bg-white shadow">
+        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+            <h1 class="text-3xl font-bold text-gray-900">Schedule Interview</h1>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+        <!-- Alert Container -->
+        <div class="alert-container"></div>
+
+        <!-- Schedule Form Section -->
+        <div class="bg-white shadow overflow-hidden sm:rounded-lg mb-6">
+            <div class="px-4 py-5 sm:px-6">
+                <h2 class="text-lg leading-6 font-medium text-gray-900">Schedule an Interview</h2>
+                <p class="mt-1 max-w-2xl text-sm text-gray-500">
+                    Coordinate interviews with candidates for your open positions.
+                </p>
+            </div>
+            <div class="border-t border-gray-200">
+                <form id="schedule-interview-form" class="p-6">
+                    <div class="grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+                        <div class="sm:col-span-3">
+                            <label for="job-select" class="block text-sm font-medium text-gray-700">Job Description</label>
+                            <div class="mt-1">
+                                <select id="job-select" name="job_id" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+                                    <option value="">Select a job description</option>
+                                    <!-- Options will be loaded by JavaScript -->
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="sm:col-span-3">
+                            <label for="candidate-select" class="block text-sm font-medium text-gray-700">Candidate</label>
+                            <div class="mt-1">
+                                <select id="candidate-select" name="candidate_id" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+                                    <option value="">Select a candidate</option>
+                                    <!-- Options will be loaded by JavaScript -->
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="sm:col-span-3">
+                            <label for="interview-date" class="block text-sm font-medium text-gray-700">Interview Date</label>
+                            <div class="mt-1">
+                                <input type="text" id="interview-date" name="interview_date" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md" placeholder="Select date">
+                            </div>
+                        </div>
+
+                        <div class="sm:col-span-3">
+                            <label for="interview-time" class="block text-sm font-medium text-gray-700">Interview Time</label>
+                            <div class="mt-1">
+                                <input type="text" id="interview-time" name="interview_time" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md" placeholder="Select time">
+                            </div>
+                        </div>
+
+                        <div class="sm:col-span-6">
+                            <label for="interview-type" class="block text-sm font-medium text-gray-700">Interview Type</label>
+                            <div class="mt-1">
+                                <select id="interview-type" name="interview_type" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+                                    <option value="phone">Phone Interview</option>
+                                    <option value="video">Video Conference</option>
+                                    <option value="in-person">In-person Interview</option>
+                                    <option value="technical">Technical Assessment</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="sm:col-span-6">
+                            <label for="interview-details" class="block text-sm font-medium text-gray-700">Interview Details</label>
+                            <div class="mt-1">
+                                <textarea id="interview-details" name="details" rows="3" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md" placeholder="Additional details for the candidate (location, meeting link, etc.)"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="sm:col-span-6">
+                            <div class="flex items-start">
+                                <div class="flex items-center h-5">
+                                    <input id="send-email" name="send_email" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                                </div>
+                                <div class="ml-3 text-sm">
+                                    <label for="send-email" class="font-medium text-gray-700">Send email invitation</label>
+                                    <p class="text-gray-500">Automatically send an interview invitation to the candidate's email.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="sm:col-span-6">
+                            <button type="submit" class="w-full inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                <i class="fas fa-calendar-plus mr-2"></i>
+                                Schedule Interview
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Upcoming Interviews Section -->
+        <div class="mt-10">
+            <h2 class="text-lg font-medium text-gray-900 mb-4">Upcoming Interviews</h2>
+            <div id="upcoming-interviews-container" class="animate-fade-in">
+                <!-- Will be populated by JavaScript -->
+                <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+                    <div class="px-4 py-12 sm:px-6 text-center">
+                        <i class="fas fa-calendar-alt text-gray-300 text-5xl mb-3"></i>
+                        <p class="text-gray-500">
+                            Loading upcoming interviews...
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 mt-12">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            <div class="md:flex md:items-center md:justify-between">
+                <div class="flex justify-center md:justify-start">
+                    <span class="text-2xl font-bold text-white">MARN<span class="text-indigo-400">AI</span></span>
+                </div>
+                <div class="mt-8 md:mt-0">
+                    <p class="text-center text-gray-400 text-sm">
+                        &copy; 2025 MARN AI. All rights reserved.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="js/main.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Initialize date and time pickers
+        flatpickr("#interview-date", {
+            dateFormat: "Y-m-d",
+            minDate: "today"
+        });
+        
+        flatpickr("#interview-time", {
+            enableTime: true,
+            noCalendar: true,
+            dateFormat: "H:i",
+            time_24hr: false
+        });
+        
+        // Load upcoming interviews
+        loadUpcomingInterviews();
+        
+        async function loadUpcomingInterviews() {
+            const upcomingContainer = document.getElementById('upcoming-interviews-container');
+            
+            try {
+                const response = await fetch(`${API_BASE_URL}/interviews`);
+                const interviews = await response.json();
+                
+                if (response.ok) {
+                    if (interviews && interviews.length > 0) {
+                        let interviewsHtml = `
+                            <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+                                <div class="overflow-x-auto">
+                                    <table class="min-w-full divide-y divide-gray-200">
+                                        <thead class="bg-gray-50">
+                                            <tr>
+                                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                    Candidate
+                                                </th>
+                                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                    Position
+                                                </th>
+                                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                    Date & Time
+                                                </th>
+                                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                    Type
+                                                </th>
+                                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                    Status
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="bg-white divide-y divide-gray-200">
+                        `;
+                        
+                        interviews.forEach(interview => {
+                            const interviewDate = new Date(interview.scheduled_date + ' ' + interview.scheduled_time);
+                            const now = new Date();
+                            const isPast = interviewDate < now;
+                            
+                            const statusClass = isPast ? 'text-gray-600 bg-gray-100' : 'text-green-800 bg-green-100';
+                            const statusText = isPast ? 'Completed' : 'Scheduled';
+                            
+                            let interviewTypeText = 'Phone Interview';
+                            if (interview.interview_type === 'video') interviewTypeText = 'Video Conference';
+                            if (interview.interview_type === 'in-person') interviewTypeText = 'In-person Interview';
+                            if (interview.interview_type === 'technical') interviewTypeText = 'Technical Assessment';
+                            
+                            interviewsHtml += `
+                                <tr class="${isPast ? 'bg-gray-50' : ''}">
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center">
+                                            <div class="flex-shrink-0 h-10 w-10">
+                                                <span class="inline-flex items-center justify-center h-10 w-10 rounded-full bg-indigo-100">
+                                                    <span class="text-indigo-800 text-sm font-medium">
+                                                        ${interview.candidate_name.charAt(0).toUpperCase()}
+                                                    </span>
+                                                </span>
+                                            </div>
+                                            <div class="ml-4">
+                                                <div class="text-sm font-medium text-gray-900">
+                                                    ${interview.candidate_name}
+                                                </div>
+                                                <div class="text-sm text-gray-500">
+                                                    ${interview.candidate_email}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="text-sm text-gray-900">${interview.job_title}</div>
+                                        <div class="text-sm text-gray-500">Match: ${interview.match_score}%</div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="text-sm text-gray-900">${interview.scheduled_date}</div>
+                                        <div class="text-sm text-gray-500">${interview.scheduled_time}</div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        ${interviewTypeText}
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${statusClass}">
+                                            ${statusText}
+                                        </span>
+                                    </td>
+                                </tr>
+                            `;
+                        });
+                        
+                        interviewsHtml += `
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        `;
+                        
+                        upcomingContainer.innerHTML = interviewsHtml;
+                    } else {
+                        upcomingContainer.innerHTML = `
+                            <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+                                <div class="px-4 py-12 sm:px-6 text-center">
+                                    <i class="fas fa-calendar-times text-gray-300 text-5xl mb-3"></i>
+                                    <p class="text-gray-500">
+                                        No upcoming interviews scheduled.
+                                    </p>
+                                    <p class="text-gray-500 mt-2">
+                                        Use the form above to schedule your first interview.
+                                    </p>
+                                </div>
+                            </div>
+                        `;
+                    }
+                } else {
+                    upcomingContainer.innerHTML = `
+                        <div class="alert alert-error">
+                            <i class="fas fa-exclamation-circle mr-2"></i>
+                            ${interviews.detail || 'Failed to load upcoming interviews.'}
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                upcomingContainer.innerHTML = `
+                    <div class="alert alert-error">
+                        <i class="fas fa-exclamation-circle mr-2"></i>
+                        Network error. Please try again.
+                    </div>
+                `;
+            }
+        }
+    });
+    </script>
+</body>
+</html> 

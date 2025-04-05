@@ -1,0 +1,554 @@
+/* 
+   RecruitAI Styles
+   Main stylesheet for the RecruitAI application
+*/
+
+/* Theme Colors */
+:root {
+  /* Dark Mode Colors */
+  --color-bg-primary: #121212;
+  --color-bg-secondary: #1e1e1e;
+  --color-bg-tertiary: #252525;
+  --color-bg-accent: #333333;
+  
+  --color-text-primary: #f5f5f5;
+  --color-text-secondary: #b3b3b3;
+  --color-text-tertiary: #757575;
+  
+  --color-accent-primary: #8a2be2; /* Purple */
+  --color-accent-secondary: #9370db;
+  --color-accent-hover: #9932cc;
+  
+  --color-success: #4ade80;
+  --color-warning: #facc15;
+  --color-danger: #f87171;
+  
+  --color-border: #333333;
+  --color-shadow: rgba(0, 0, 0, 0.4);
+}
+
+/* General Styles */
+body {
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  line-height: 1.5;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Navigation */
+nav {
+  background-color: var(--color-bg-secondary) !important;
+  box-shadow: 0 1px 3px var(--color-shadow) !important;
+}
+
+nav a {
+  color: var(--color-text-secondary) !important;
+}
+
+nav a:hover {
+  color: var(--color-text-primary) !important;
+}
+
+nav a.border-indigo-500 {
+  border-color: var(--color-accent-primary) !important;
+  color: var(--color-text-primary) !important;
+}
+
+.text-indigo-600 {
+  color: var(--color-accent-primary) !important;
+}
+
+.text-indigo-400 {
+  color: var(--color-accent-secondary) !important;
+}
+
+.text-gray-800 {
+  color: var(--color-text-primary) !important;
+}
+
+/* Card Styles */
+.bg-white, .bg-gray-50 {
+  background-color: var(--color-bg-secondary) !important;
+}
+
+.bg-gray-100 {
+  background-color: var(--color-bg-tertiary) !important;
+}
+
+.shadow {
+  box-shadow: 0 1px 3px var(--color-shadow) !important;
+}
+
+.shadow-md {
+  box-shadow: 0 4px 6px -1px var(--color-shadow) !important;
+}
+
+.shadow-lg {
+  box-shadow: 0 10px 15px -3px var(--color-shadow) !important;
+}
+
+.shadow-sm {
+  box-shadow: 0 1px 2px 0 var(--color-shadow) !important;
+}
+
+/* Form Elements */
+input, select, textarea {
+  background-color: var(--color-bg-tertiary) !important;
+  border-color: var(--color-border) !important;
+  color: var(--color-text-primary) !important;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: var(--color-accent-primary) !important;
+  box-shadow: 0 0 0 3px rgba(138, 43, 226, 0.25) !important;
+}
+
+/* Button Styles */
+.bg-indigo-600, .bg-indigo-500 {
+  background-color: var(--color-accent-primary) !important;
+}
+
+.bg-indigo-700, .hover\:bg-indigo-700:hover {
+  background-color: var(--color-accent-hover) !important;
+}
+
+.bg-indigo-100 {
+  background-color: rgba(138, 43, 226, 0.15) !important;
+}
+
+.bg-indigo-50 {
+  background-color: rgba(138, 43, 226, 0.08) !important;
+}
+
+.hover\:bg-indigo-200:hover {
+  background-color: rgba(138, 43, 226, 0.25) !important;
+}
+
+.text-indigo-700, .text-indigo-800 {
+  color: var(--color-accent-secondary) !important;
+}
+
+.border-indigo-500, .focus\:ring-indigo-500:focus {
+  border-color: var(--color-accent-primary) !important;
+}
+
+.focus\:ring-offset-2:focus {
+  --tw-ring-offset-width: 2px;
+  --tw-ring-offset-color: var(--color-bg-secondary);
+}
+
+/* Text Colors */
+.text-gray-900 {
+  color: var(--color-text-primary) !important;
+}
+
+.text-gray-700, .text-gray-800 {
+  color: var(--color-text-secondary) !important;
+}
+
+.text-gray-600, .text-gray-500, .text-gray-400 {
+  color: var(--color-text-tertiary) !important;
+}
+
+/* Border Colors */
+.border-gray-300, .border-gray-200 {
+  border-color: var(--color-border) !important;
+}
+
+.divide-gray-200 > * {
+  border-color: var(--color-border) !important;
+}
+
+/* Upload Area */
+.upload-area {
+  border: 2px dashed var(--color-border);
+  border-radius: 0.375rem;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.upload-area:hover {
+  background-color: var(--color-bg-tertiary);
+  border-color: var(--color-accent-secondary);
+}
+
+/* File List */
+.file-list-item {
+  background-color: var(--color-bg-tertiary);
+  border-radius: 0.375rem;
+  padding: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Match Score */
+.match-score {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-accent-primary);
+}
+
+.progress-bar {
+  height: 0.5rem;
+  background-color: var(--color-bg-tertiary);
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.progress-value {
+  height: 100%;
+  background-color: var(--color-accent-primary);
+  border-radius: 1rem;
+}
+
+/* Alert Styles */
+.alert {
+  padding: 1rem;
+  border-radius: 0.375rem;
+  margin-bottom: 1rem;
+}
+
+.alert-success {
+  background-color: rgba(74, 222, 128, 0.1);
+  border: 1px solid var(--color-success);
+  color: var(--color-success);
+}
+
+.alert-warning {
+  background-color: rgba(250, 204, 21, 0.1);
+  border: 1px solid var(--color-warning);
+  color: var(--color-warning);
+}
+
+.alert-error {
+  background-color: rgba(248, 113, 113, 0.1);
+  border: 1px solid var(--color-danger);
+  color: var(--color-danger);
+}
+
+/* Loading Spinner */
+.spinner {
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 3px solid rgba(138, 43, 226, 0.3);
+  border-radius: 50%;
+  border-top-color: var(--color-accent-primary);
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 640px) {
+  .match-score {
+    font-size: 1.5rem;
+  }
+}
+
+/* Table Styles */
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+thead {
+  background-color: var(--color-bg-tertiary) !important;
+}
+
+th {
+  color: var(--color-text-secondary) !important;
+}
+
+tbody tr:hover {
+  background-color: var(--color-bg-tertiary) !important;
+}
+
+/* Status Labels */
+.bg-green-100 {
+  background-color: rgba(74, 222, 128, 0.15) !important;
+}
+
+.text-green-800 {
+  color: var(--color-success) !important;
+}
+
+/* Footer */
+footer.bg-gray-800 {
+  background-color: var(--color-bg-tertiary) !important;
+}
+
+/* Override button border colors */
+.border-transparent {
+  border-color: transparent !important;
+}
+
+/* Hero section */
+.bg-indigo-700 {
+  background-color: var(--color-bg-tertiary) !important;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* Minimal styling */
+.rounded-lg, .rounded-md, .rounded-full {
+  border-radius: 4px !important;
+}
+
+.sm\:rounded-lg, .sm\:rounded-md {
+  border-radius: 4px !important;
+}
+
+/* Smooth transitions */
+a, button, input, select, textarea {
+  transition: all 0.2s ease !important;
+}
+
+/* Remove excessive shadows */
+.shadow-sm, .shadow, .shadow-md, .shadow-lg {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Clean, minimalist styling */
+.rounded-full {
+  border-radius: 4px !important;
+}
+
+/* Interview Schedule Styles */
+.schedule-card {
+    background-color: var(--gray-50);
+    padding: 1rem;
+    border-radius: 0.375rem;
+    margin-bottom: 1rem;
+}
+
+.schedule-time {
+    background-color: var(--primary);
+    color: white;
+    padding: 0.5rem;
+    border-radius: 0.375rem;
+    font-weight: 600;
+    display: inline-block;
+}
+
+.schedule-type {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.schedule-type-video {
+    background-color: rgba(79, 70, 229, 0.1);
+    color: var(--primary);
+}
+
+.schedule-type-phone {
+    background-color: rgba(16, 185, 129, 0.1);
+    color: var(--success);
+}
+
+.schedule-type-in-person {
+    background-color: rgba(245, 158, 11, 0.1);
+    color: var(--warning);
+}
+
+/* Dashboard Widgets */
+.widget {
+    background: white;
+    border-radius: 0.375rem;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.widget-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--gray-900);
+}
+
+.widget-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.widget-caption {
+    color: var(--gray-500);
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+/* Table Styles */
+.table-container {
+    overflow-x: auto;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th {
+    background-color: var(--gray-50);
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    text-align: left;
+    color: var(--gray-500);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid var(--gray-200);
+}
+
+.table td {
+    padding: 0.75rem 1.5rem;
+    border-bottom: 1px solid var(--gray-200);
+}
+
+.table tr:hover {
+    background-color: var(--gray-50);
+}
+
+/* Status Labels */
+.status-label {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.5rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.status-scheduled {
+    background-color: rgba(16, 185, 129, 0.1);
+    color: var(--success);
+}
+
+.status-completed {
+    background-color: rgba(107, 114, 128, 0.1);
+    color: var(--gray-600);
+}
+
+.status-matched {
+    background-color: rgba(79, 70, 229, 0.1);
+    color: var(--primary);
+}
+
+/* Button Styles */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    color: white;
+    border: 1px solid transparent;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-dark);
+}
+
+.btn-outline {
+    background-color: transparent;
+    border: 1px solid var(--gray-300);
+    color: var(--gray-700);
+}
+
+.btn-outline:hover {
+    background-color: var(--gray-100);
+    border-color: var(--gray-400);
+}
+
+.btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+}
+
+.btn-lg {
+    padding: 0.75rem 1.5rem;
+    font-size: 1.125rem;
+}
+
+/* Utility Classes */
+.mb-1 { margin-bottom: 0.25rem; }
+.mb-2 { margin-bottom: 0.5rem; }
+.mb-3 { margin-bottom: 0.75rem; }
+.mb-4 { margin-bottom: 1rem; }
+.mb-6 { margin-bottom: 1.5rem; }
+.mb-8 { margin-bottom: 2rem; }
+
+.mt-1 { margin-top: 0.25rem; }
+.mt-2 { margin-top: 0.5rem; }
+.mt-3 { margin-top: 0.75rem; }
+.mt-4 { margin-top: 1rem; }
+.mt-6 { margin-top: 1.5rem; }
+.mt-8 { margin-top: 2rem; }
+
+.mx-auto { margin-left: auto; margin-right: auto; }
+
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+
+.flex { display: flex; }
+.items-center { align-items: center; }
+.justify-between { justify-content: space-between; }
+.justify-center { justify-content: center; }
+
+/* Custom Page Elements */
+.page-header {
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--gray-200);
+    margin-bottom: 2rem;
+}
+
+.page-title {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: var(--gray-900);
+}
+
+.page-subtitle {
+    color: var(--gray-500);
+    margin-top: 0.5rem;
+}
+
+/* Footer Styling */
+footer {
+    border-top: 1px solid var(--gray-200);
+    padding: 2rem 0;
+    margin-top: 4rem;
+}
+
+.footer-link {
+    color: var(--gray-500);
+    margin-right: 1.5rem;
+    font-size: 0.875rem;
+}
+
+.footer-link:hover {
+    color: var(--primary);
+} 
